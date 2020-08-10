@@ -38,3 +38,19 @@ dependencies {
     implementation gsonDependency
     compileOnly grpcOkHttpDependency
 }
+
+tasks.withType(Javadoc).all {
+    // disables Javadoc tasks. They are not compatible with Kotlin and causes an error when deploying the package.
+    enabled = false
+}
+
+ext {
+    bintrayName = 'grpc'
+    publishedArtifactId = 'grpc'
+
+    libraryName = 'Flipper gRPC plugin'
+    libraryDescription = 'Plugin for debugging tool Flipper for logging gRPC requests'
+}
+
+apply from: rootProject.file('gradle/bintray/install.gradle')
+apply from: rootProject.file('gradle/bintray/bintray.gradle')
