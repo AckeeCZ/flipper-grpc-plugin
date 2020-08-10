@@ -52,7 +52,7 @@ val channel = OkHttpChannelBuilder
 
 and that's it. If you run your app you should now see requests in Flipper
 
-[](./flipper_plugin.png)
+![Plugin image](./flipper_plugin.png "Plugin image")
 
 
 ### Sample app
