@@ -38,7 +38,7 @@ export default class RequestDetails extends Component<RequestDetailsProps, Reque
                     </Panel>
                 ) : null}
 
-                {request.data != null ? (
+                {request.data ? (
                     <Panel
                         heading={'Request Body'}
                         floating={false}
@@ -59,7 +59,7 @@ export default class RequestDetails extends Component<RequestDetailsProps, Reque
                                 <HeaderInspector headers={response.headers}/>
                             </Panel>
                         ) : null}
-                        {response.data != null ? (
+                        {response.data ? (
                             <Panel
                                 heading={`Response Body`}
                                 floating={false}
