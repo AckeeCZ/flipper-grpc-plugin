@@ -145,6 +145,11 @@ function buildRow(
         return null;
     }
 
+    const requestData = request.data ? request.data : '';
+    const responseData = response && response.data ? response.data : '';
+    const requestHeaders = request.headers.map(header => header.value).join(" ");
+    const responseHeaders = response ? response.headers.map(header => header.value).join(" ") : '';
+    const filterValue = `${request.method} ${request.authority} ${requestData} ${responseData} ${requestHeaders} ${responseHeaders}`;
     return {
         columns: {
             requestTimestamp: {
@@ -173,7 +178,7 @@ function buildRow(
             },
         },
         key: request.id,
-        filterValue: `${request.method} ${request.authority}`,
+        filterValue: filterValue,
         sortKey: request.timestamp,
         copyText: "",
         highlightOnHover: true,
