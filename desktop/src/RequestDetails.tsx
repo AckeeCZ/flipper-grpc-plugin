@@ -31,7 +31,6 @@ export default class RequestDetails extends Component<RequestDetailsProps, Reque
             <RequestDetails.Container>
                 {request.headers.length > 0 ? (
                     <Panel
-                        key="headers"
                         heading={'Request Headers'}
                         floating={false}
                         padded={false}>
@@ -41,7 +40,6 @@ export default class RequestDetails extends Component<RequestDetailsProps, Reque
 
                 {request.data != null ? (
                     <Panel
-                        key="requestData"
                         heading={'Request Body'}
                         floating={false}
                         padded={false}>
@@ -55,7 +53,6 @@ export default class RequestDetails extends Component<RequestDetailsProps, Reque
                     <>
                         {response.headers.length > 0 ? (
                             <Panel
-                                key={'responseheaders'}
                                 heading={`Response Headers`}
                                 floating={false}
                                 padded={false}>
@@ -64,7 +61,6 @@ export default class RequestDetails extends Component<RequestDetailsProps, Reque
                         ) : null}
                         {response.data != null ? (
                             <Panel
-                                key={'responsebody'}
                                 heading={`Response Body`}
                                 floating={false}
                                 padded={false}>
