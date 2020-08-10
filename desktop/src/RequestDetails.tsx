@@ -103,28 +103,18 @@ type HeaderInspectorState = {
 
 class HeaderInspector extends Component<HeaderInspectorProps, HeaderInspectorState> {
     render() {
-        const computedHeaders: Map<string, string> = this.props.headers.reduce(
-            (sum, header) => {
-                return sum.set(header.key, header.value);
-            },
-            new Map(),
-        );
-
-        const rows: any = [];
-        computedHeaders.forEach((value: string, key: string) => {
-            rows.push({
-                columns: {
-                    key: {
-                        value: <WrappingText>{key}</WrappingText>,
-                    },
-                    value: {
-                        value: <WrappingText>{value}</WrappingText>,
-                    },
+        const rows = this.props.headers.map(({key, value}) => ({
+            columns: {
+                key: {
+                    value: <WrappingText>{key}</WrappingText>,
                 },
-                copyText: value,
-                key,
-            });
-        });
+                value: {
+                    value: <WrappingText>{value}</WrappingText>,
+                },
+            },
+            copyText: value,
+            key,
+        }));
 
         return rows.length > 0 ? (
             <ManagedTable

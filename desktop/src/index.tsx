@@ -74,11 +74,7 @@ export default class extends FlipperPlugin<State, any, PersistedState> {
     render() {
         const {requests, responses} = this.props.persistedState;
         const {selectedId} = this.state;
-        const rows: any = [];
-
-        for (const [, req] of Object.entries(requests)) {
-            rows.push(buildRow(req, responses[req.id]))
-        }
+        const rows: any = Object.values(requests).map(req => buildRow(req, responses[req.id]));
 
         let highlightedRows = selectedId ? new Set([selectedId]) : null;
         return <FlexColumn grow={true}>
