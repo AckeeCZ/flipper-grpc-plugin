@@ -30,7 +30,7 @@ const COLUMNS = {
 };
 
 type State = {
-    selectedId: string | null,
+    selectedId?: string
 };
 
 type PersistedState = {
@@ -67,7 +67,7 @@ export default class extends FlipperPlugin<State, any, PersistedState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            selectedId: null
+            selectedId: undefined
         };
     }
 
@@ -108,12 +108,12 @@ export default class extends FlipperPlugin<State, any, PersistedState> {
     }
 
     onRowHighlighted = (selectedIds: Array<RequestId>) => {
-        this.setState({selectedId: selectedIds.length == 0 ? null : selectedIds[0]});
+        this.setState({selectedId: selectedIds.length == 0 ? undefined : selectedIds[0]});
     };
 
     clearTable() {
         this.setState({
-            selectedId: null
+            selectedId: undefined
         });
         this.props.setPersistedState({responses: {}, requests: {}});
     }
@@ -139,8 +139,8 @@ export default class extends FlipperPlugin<State, any, PersistedState> {
 
 function buildRow(
     request: Request,
-    response: Response | null | undefined,
-): TableBodyRow | null | undefined {
+    response?: Response,
+): TableBodyRow | null {
     if (request == null) {
         return null;
     }
@@ -184,6 +184,6 @@ function buildRow(
         highlightOnHover: true,
         style: undefined,
         requestBody: request.data,
-        responseBody: response == undefined ? undefined : response.data,
+        responseBody: response ? response.data : undefined,
     };
 }

@@ -11,7 +11,7 @@ export type Request = {
     authority: string;
     method: string;
     headers: Array<Header>;
-    data: string | null | undefined;
+    data?: string;
 };
 
 export type Response = {
@@ -19,6 +19,6 @@ export type Response = {
     timestamp: number;
     status: string;
     headers: Array<Header>;
-    cause: string | null;
-    data: string | null | undefined;
+    cause?: string;
+    data?: string;
 };

@@ -12,7 +12,7 @@ const WrappingText = styled(Text)({
 
 type RequestDetailsProps = {
     request: Request;
-    response: Response | null | undefined;
+    response?: Response;
 };
 
 type RequestDetailsState = {};

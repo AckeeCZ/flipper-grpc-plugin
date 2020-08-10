@@ -65,7 +65,7 @@ export class StatusColumn extends PureComponent<{
 
 export class DurationColumn extends PureComponent<{
     request: Request;
-    response: Response | null | undefined;
+    response?: Response;
 }> {
     static Text = styled(Text)({
         flex: 1,
