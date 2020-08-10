@@ -1,6 +1,5 @@
 package com.ackee.flipper.grpc.sample
 
-
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -11,7 +10,6 @@ import io.grpc.okhttp.OkHttpChannelBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,18 +25,16 @@ class MainActivity : AppCompatActivity() {
                 .build()
             val greeterStub = GreeterGrpc.newBlockingStub(channel)
 
-            GlobalScope.launch {
-                withContext(Dispatchers.IO) {
-                    try {
-                        val response = greeterStub.sayHello(
-                            HelloRequest.newBuilder()
-                                .setName("David")
-                                .build()
-                        )
-                        Log.d(MainActivity::class.java.simpleName, response.message)
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
+            GlobalScope.launch(Dispatchers.IO) {
+                try {
+                    val response = greeterStub.sayHello(
+                        HelloRequest.newBuilder()
+                            .setName("David")
+                            .build()
+                    )
+                    Log.d(MainActivity::class.java.simpleName, response.message)
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
         }
