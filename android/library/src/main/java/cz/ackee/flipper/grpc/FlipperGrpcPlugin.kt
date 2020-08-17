@@ -1,4 +1,4 @@
-package com.ackee.flipper.grpc
+package cz.ackee.flipper.grpc
 
 import com.facebook.flipper.core.ErrorReportingRunnable
 import com.facebook.flipper.core.FlipperArray

@@ -1,11 +1,11 @@
-package com.ackee.flipper.grpc.sample
+package cz.ackee.flipper.grpc.sample
 
 import android.app.Application
-import com.ackee.flipper.grpc.FlipperGrpcPlugin
 import com.facebook.flipper.android.AndroidFlipperClient
 import com.facebook.flipper.plugins.inspector.DescriptorMapping
 import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin
 import com.facebook.soloader.SoLoader
+import cz.ackee.flipper.grpc.FlipperGrpcPlugin
 
 
 /**
