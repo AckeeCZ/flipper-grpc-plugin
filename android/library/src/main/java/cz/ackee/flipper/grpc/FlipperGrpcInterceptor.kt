@@ -1,16 +1,8 @@
-package com.ackee.flipper.grpc
+package cz.ackee.flipper.grpc
 
 import com.google.gson.GsonBuilder
-import io.grpc.CallOptions
-import io.grpc.Channel
-import io.grpc.ClientCall
-import io.grpc.ClientInterceptor
-import io.grpc.ForwardingClientCall
-import io.grpc.ForwardingClientCallListener
-import io.grpc.Metadata
-import io.grpc.MethodDescriptor
-import io.grpc.Status
-import java.util.UUID
+import io.grpc.*
+import java.util.*
 
 /**
  * Interceptor that logs requests and responses from gRPC server
@@ -25,7 +17,13 @@ internal class FlipperGrpcInterceptor(
         next: Channel
     ): ClientCall<ReqT, RespT> {
         val requestId = UUID.randomUUID().toString()
-        return LoggingForwardingClientCall(flipperGrpcPlugin, requestId, method, next, callOptions)
+        return LoggingForwardingClientCall(
+            flipperGrpcPlugin,
+            requestId,
+            method,
+            next,
+            callOptions
+        )
     }
 }
 
@@ -44,7 +42,13 @@ private class LoggingForwardingClientCall<ReqT, RespT>(
 
     override fun start(responseListener: ClientCall.Listener<RespT>, headers: Metadata) {
         this.headers = headers
-        super.start(LoggingClientCallListener(flipperGrpcPlugin, requestId, responseListener), headers)
+        super.start(
+            LoggingClientCallListener(
+                flipperGrpcPlugin,
+                requestId,
+                responseListener
+            ), headers
+        )
     }
 
     override fun sendMessage(message: ReqT) {

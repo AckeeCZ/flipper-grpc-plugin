@@ -1,4 +1,4 @@
-package com.ackee.flipper.grpc
+package cz.ackee.flipper.grpc
 
 import io.grpc.Metadata
 
@@ -7,7 +7,10 @@ data class Header(val key: String, val value: String)
 fun Metadata.toHeaders(): List<Header> {
     return keys().mapNotNull {
         try {
-            Header(it, get(Metadata.Key.of(it, Metadata.ASCII_STRING_MARSHALLER)).toString())
+            Header(
+                it,
+                get(Metadata.Key.of(it, Metadata.ASCII_STRING_MARSHALLER)).toString()
+            )
         } catch (e: Exception) {
             null
         }

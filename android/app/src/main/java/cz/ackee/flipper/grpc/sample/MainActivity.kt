@@ -1,4 +1,4 @@
-package com.ackee.flipper.grpc.sample
+package cz.ackee.flipper.grpc.sample
 
 import android.os.Bundle
 import android.util.Log
