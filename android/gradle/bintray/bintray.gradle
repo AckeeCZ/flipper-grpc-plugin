@@ -28,8 +28,8 @@ if (project.rootProject.file('local.properties').exists()) {
     bintrayUser = properties.getProperty("bintray.user")
     bintrayApiKey = properties.getProperty("bintray.apikey")
 } else {
-    bintrayUser = bintrayUser = System.getenv("bintrayUsername")
-    bintrayApiKey = bintrayApiKey = System.getenv("bintrayApiKey")
+    bintrayUser = bintrayUser = System.getenv("BINTRAY_NAME")
+    bintrayApiKey = bintrayApiKey = System.getenv("BINTRAY_API_KEY")
 }
 
 bintray {
