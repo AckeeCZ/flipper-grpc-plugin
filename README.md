@@ -7,13 +7,14 @@ This is a plugin for Facebook debugging tool [Flipper](https://fbflipper.com/) f
 You need to install desktop version of the plugin to the Flipper desktop app. Open `View` > `Manage Plugins` > `Install plugins` and search for `grpc`. Once installed restart the desktop app.
 
 ## Android
+[ ![Download](https://api.bintray.com/packages/ackeecz/flipper-plugin-grpc/grpc/images/download.svg) ](https://bintray.com/ackeecz/flipper-plugin-grpc/grpc/_latestVersion)
 
 ### Gradle
 
 ```groovy
 dependencies {
     ...
-    implementation "com.ackee.flipper:grpc:x.x.x"
+    implementation "cz.ackee.flipper:grpc:x.x.x"
 }
 ```
 
