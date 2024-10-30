@@ -1,3 +1,7 @@
+# DEPRECATED
+
+This library is no longer maintained and this repository is archived.
+
 # Flipper gRPC plugin
 
 This is a plugin for Facebook debugging tool [Flipper](https://fbflipper.com/) for logging gRPC requests from mobile clients. 
